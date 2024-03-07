@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dxctechnicalassessment
+    username: postgres
+    password: password
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  messages:
+    basename: lang/messages
+server:
+  error:
+    whitelabel:
+      enabled: false
+    path: "/error"

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="#{error.general.page-title}">Error</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <section class="container h-100 d-flex flex-column justify-content-center align-items-center gap-2">
+        <h1 th:text="${statusCode}"></h1>
+        <div th:switch="${statusCode}">
+            <h3 th:case="403" th:text="#{error.forbidden.message}">You are not allowed to view this.</h3>
+            <h3 th:case="404" th:text="#{error.not-found.message}">Page not found.</h3>
+            <h3 th:case="*" th:text="#{error.general.message}">Something went wrong.</h3>
+        </div>
+        <a class="btn btn-primary" th:text="#{error.home-link}" th:href="@{/}">Go back home</a>
+    </section>
+</section>
+</body>
+</html>

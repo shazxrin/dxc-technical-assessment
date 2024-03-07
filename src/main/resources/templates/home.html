@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="#{home.page-title}">Home</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container h-100 d-flex flex-column justify-content-center align-items-center gap-2">
+        <h1>
+            <span th:text="#{home.greet-user}">Hello</span> <span th:text="${appUserDetails.name}"></span> (<span th:text="${appUserDetails.username}"></span>)!
+        </h1>
+        <h2>
+            <span th:text="#{home.greet-role}">Your role is</span> <span th:text="${appUserDetails.authorities[0].authority.replace('ROLE_', '')}"></span>.
+        </h2>
+        <a class="btn btn-primary" th:if="${appUserDetails.authorities[0].authority == 'ROLE_MANAGER'}" th:href="@{/manager}">
+            <span th:text="#{home.manager-link}">Go to manager page</span>
+        </a>
+    </div>
+</section>
+</body>
+</html>
